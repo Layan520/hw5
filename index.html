@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapshot - Photography</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<style>
+    
+/* =========================
+   General
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Source Sans 3', Arial, sans-serif;
+    color: #263746;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+a {
+    text-decoration: none;
+    color: #19b5f5;
+}
+
+main {
+    margin-left: 62px;
+}
+
+/* =========================
+   Sidebar
+========================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 62px;
+    background: #1c2b36;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding-top: 27px;
+    z-index: 1000;
+}
+
+.sidebar a {
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.sidebar a:hover {
+    color: #19b5f5;
+}
+
+/* =========================
+   Hero
+========================= */
+
+.hero {
+    width: 100%;
+    height: 380px;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.50),
+            rgba(0, 0, 0, 0.50)
+        ),
+        url(banner.jpg) center center / cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.hero-content {
+    color: #fff;
+}
+
+.hero h1 {
+    color: #fff;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 17px;
+}
+
+.hero p {
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 24px;
+}
+
+.hero p a {
+    color: #19b5f5;
+}
+
+.continue-btn {
+    display: inline-block;
+    background: #1c2b36;
+    color: #fff;
+    padding: 9px 21px;
+    border-radius: 2px;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.continue-btn:hover {
+    background: #19b5f5;
+}
+
+/* =========================
+   Gallery
+========================= */
+
+.gallery-section {
+    background: #fff;
+    padding: 48px 25px 50px;
+    text-align: center;
+}
+
+.gallery-section h2 {
+    color: #263746;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 38px;
+}
+
+.gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.gallery-item {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #eee;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+.gallery-btn {
+    display: inline-block;
+    margin-top: 9px;
+    padding: 9px 20px;
+    background: #19b5f5;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.gallery-btn:hover {
+    background: #0799d6;
+}
+
+/* =========================
+   About + Contact
+========================= */
+
+.info-section {
+    background: #d2d2d2;
+    padding: 48px 35px 50px;
+}
+
+.info-container {
+    max-width: 810px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 38px;
+}
+
+.info-container h2 {
+    color: #263746;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 14px;
+}
+
+.about p {
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 24px;
+}
+
+.about .follow-title {
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+
+/* =========================
+   Social Icons
+========================= */
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.social-links a {
+    color: #19b5f5;
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+.social-links a:hover {
+    color: #078cc7;
+}
+
+/* =========================
+   Contact Form
+========================= */
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact label {
+    color: #39434c;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background: #fff;
+    color: #333;
+    padding: 9px;
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+    margin-bottom: 17px;
+}
+
+.contact input {
+    height: 34px;
+}
+
+.contact textarea {
+    height: 102px;
+    resize: vertical;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #19b5f5;
+}
+
+.contact button {
+    width: 100%;
+    border: none;
+    border-radius: 2px;
+    background: #19b5f5;
+    color: #fff;
+    font-family: inherit;
+    font-size: 12px;
+    padding: 9px;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: background 0.2s;
+}
+
+.contact button:hover {
+    background: #0799d6;
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    background: #fff;
+    color: #53606a;
+    text-align: center;
+    padding: 23px 12px;
+    font-size: 11px;
+}
+
+/* =========================
+   Tablet and Mobile
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    main {
+        margin-left: 39px;
+    }
+
+    .sidebar {
+        width: 39px;
+        gap: 20px;
+        padding-top: 18px;
+    }
+
+    .sidebar a {
+        font-size: 16px;
+    }
+
+    .hero {
+        height: 257px;
+        padding: 15px;
+    }
+
+    .hero h1 {
+        font-size: 23px;
+        margin-bottom: 12px;
+    }
+
+    .hero p {
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
+    .gallery-section {
+        padding: 39px 20px 40px;
+    }
+
+    .gallery-section h2 {
+        font-size: 20px;
+        margin-bottom: 34px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .gallery-btn {
+        margin-top: 8px;
+    }
+
+    .info-section {
+        padding: 39px 20px 42px;
+    }
+
+    .info-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .info-container h2 {
+        font-size: 17px;
+    }
+
+    .about p {
+        font-size: 12px;
+    }
+
+    footer {
+        padding: 20px 8px;
+        font-size: 10px;
+    }
+}
+
+/* =========================
+   Small Phones
+========================= */
+
+@media screen and (max-width: 400px) {
+
+    main {
+        margin-left: 35px;
+    }
+
+    .sidebar {
+        width: 35px;
+    }
+
+    .hero h1 {
+        font-size: 20px;
+    }
+
+    .hero p {
+        font-size: 9px;
+    }
+
+    .gallery-section {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .gallery {
+        gap: 8px;
+    }
+
+    .info-section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
+
+</style>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <a href="#home" aria-label="Home">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+        <a href="#gallery" aria-label="Gallery">
+            <i class="fa-solid fa-camera"></i>
+        </a>
+
+        <a href="#about" aria-label="About">
+            <i class="fa-solid fa-file-lines"></i>
+        </a>
+    </aside>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Hey, I'm Snapshot</h1>
+
+                <p>
+                    A fully responsive gallery template by
+                    <a href="#footer">TEMPLATED</a>
+                </p>
+
+                <a href="#gallery" class="continue-btn">Continue</a>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="gallery-section" id="gallery">
+            <h2>What's New</h2>
+
+            <div class="gallery">
+
+                <a href="#gallery" class="gallery-item">
+                    <img src="01.jpg" alt="Portrait">
+                </a>
+
+                <a href="#gallery" class="gallery-item">
+                    <img src="05.jpg" alt="Japanese temple">
+                </a>
+
+                <a href="#gallery" class="gallery-item">
+                    <img src="09.jpg" alt="Vintage truck">
+                </a>
+
+                <a href="#gallery" class="gallery-item">
+                    <img src="02.jpg" alt="Woman in a car">
+                </a>
+
+                <a href="#gallery" class="gallery-item">
+                    <img src="06.jpg" alt="Garden pathway">
+                </a>
+
+                <a href="#gallery" class="gallery-item">
+                    <img src="10 (1).jpg" alt="Vintage leather bag">
+                </a>
+
+                <a href="#gallery" class="gallery-item">
+                    <img src="03.jpg" alt="Street portrait">
+                </a>
+
+                <a href="#gallery" class="gallery-item">
+                    <img src="07.jpg" alt="Mountain landscape">
+                </a>
+
+            </div>
+
+            <a href="#gallery" class="gallery-btn">Full Gallery</a>
+        </section>
+
+        <!-- About and Contact -->
+        <section class="info-section">
+            <div class="info-container">
+
+                <!-- About Me -->
+                <div class="about" id="about">
+                    <h2>About Me</h2>
+
+                    <p>
+                        Mus sed interdum nunc dictum rutrum scelerisque erat
+                        a parturient condimentum potenti dapibus vestibulum
+                        condimentum per tristique porta. Torquent at
+                        consectetur a vel ullamcorper a commodo a mattis
+                        ipsum class quam sed eros vestibulum quisque a eu
+                        nulla scelerisque a elementum vestibulum.
+                    </p>
+
+                    <p>
+                        Aliquet dolor ultricies sem rhoncus dolor
+                        ullamcorper pharetra dis condimentum ullamcorper
+                        rutrum vehicula id nisi vel aptent orci litora
+                        hendrerit penatibus erat ad sit. In a semper velit
+                        eleifend a viverra adipiscing a phasellus urna
+                        praesent parturient integer ultrices montes
+                        parturient suscipit posuere quis aenean.
+                        Parturient euismod ultricies commodo arcu elementum
+                        suspendisse id dictumst at ut vestibulum conubia
+                        quisque a himenaeos dictum proin dis purus integer
+                        mollis parturient eros scelerisque dis libero
+                        parturient magnis.
+                    </p>
+
+                    <h2 class="follow-title">Follow Me</h2>
+
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="contact" id="contact">
+                    <h2>Get in Touch</h2>
+
+                    <form action="#" method="post">
+
+                        <label for="name">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Name"
+                            required
+                        >
+
+                        <label for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Email"
+                            required
+                        >
+
+                        <label for="message">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Message"
+                            required
+                        ></textarea>
+
+                        <button type="submit">Send Message</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p>
+                © Untitled Design:
+                <a href="#home">TEMPLATED</a>.
+                Images:
+                <a href="#gallery">Unsplash</a>.
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
